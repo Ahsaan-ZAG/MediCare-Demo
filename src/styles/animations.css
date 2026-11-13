@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Reveal primitives.
+   IMPORTANT: We deliberately DO NOT hide [data-reveal] in CSS. GSAP sets the
+   hidden state at runtime so that if JS ever fails, content stays visible.
+   ========================================================================== */
+
+.hero__title,
+.hero__lede,
+.hero__actions,
+.hero__trust,
+.hero__badge {
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.hero.is-ready .hero__title,
+.hero.is-ready .hero__lede,
+.hero.is-ready .hero__actions,
+.hero.is-ready .hero__trust,
+.hero.is-ready .hero__badge {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero__title,
+    .hero__lede,
+    .hero__actions,
+    .hero__trust,
+    .hero__badge {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .bg-orbs::before,
+    .bg-orbs::after {
+        animation: none;
+    }
+}

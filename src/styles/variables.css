@@ -1,0 +1,111 @@
+:root {
+    /* Surfaces */
+    --c-bg-900: #061918;
+    --c-bg-800: #0B2825;
+    --c-bg-700: #0E3530;
+    --c-bg-600: #12433C;
+
+    /* Brand */
+    --c-emerald-700: #087F5B;
+    --c-emerald-500: #00C896;
+    --c-mint-300: #9AF5D5;
+
+    /* Text */
+    --c-text: #F4FFFB;
+    --c-muted: #A7C5BB;
+    --c-faint: rgba(167, 197, 187, 0.62);
+
+    /* Glass */
+    --glass-surface: rgba(255, 255, 255, 0.08);
+    --glass-surface-strong: rgba(255, 255, 255, 0.12);
+    --glass-surface-soft: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-border-soft: rgba(255, 255, 255, 0.09);
+    --glass-highlight: rgba(255, 255, 255, 0.28);
+
+    /* Shadows */
+    --shadow-soft: 0 12px 34px -14px rgba(0, 0, 0, 0.65);
+    --shadow-md: 0 26px 68px -28px rgba(0, 0, 0, 0.8);
+    --shadow-deep: 0 46px 120px -46px rgba(0, 0, 0, 0.9);
+    --shadow-glow: 0 0 0 1px rgba(0, 200, 150, 0.22), 0 24px 70px -22px rgba(0, 200, 150, 0.42);
+
+    /* Gradients */
+    --grad-emerald: linear-gradient(135deg, #00C896 0%, #087F5B 100%);
+    --grad-emerald-soft: linear-gradient(135deg, rgba(0, 200, 150, 0.22), rgba(8, 127, 91, 0.06));
+    --grad-glass: linear-gradient(158deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.035) 55%, rgba(255, 255, 255, 0.07) 100%);
+    --grad-text: linear-gradient(102deg, #F4FFFB 8%, #9AF5D5 52%, #00C896 100%);
+    --grad-hairline: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+
+    /* Typography (OFFLINE SYSTEM FONTS) */
+    --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --fs-2xs: clamp(0.688rem, 0.66rem + 0.12vw, 0.75rem);
+    --fs-xs: clamp(0.75rem, 0.72rem + 0.14vw, 0.813rem);
+    --fs-sm: clamp(0.844rem, 0.81rem + 0.18vw, 0.938rem);
+    --fs-md: clamp(0.938rem, 0.9rem + 0.2vw, 1.063rem);
+    --fs-lg: clamp(1.063rem, 1rem + 0.35vw, 1.25rem);
+    --fs-xl: clamp(1.25rem, 1.12rem + 0.7vw, 1.625rem);
+    --fs-2xl: clamp(1.563rem, 1.3rem + 1.3vw, 2.25rem);
+    --fs-3xl: clamp(2rem, 1.55rem + 2.2vw, 3.25rem);
+    --fs-4xl: clamp(2.5rem, 1.75rem + 3.4vw, 4.25rem);
+    --fs-5xl: clamp(3rem, 1.9rem + 4.8vw, 5.5rem);
+
+    --lh-tight: 1.06;
+    --lh-snug: 1.2;
+    --lh-normal: 1.55;
+    --lh-relaxed: 1.75;
+    --tracking-tight: -0.03em;
+    --tracking-wide: 0.14em;
+
+    /* Spacing */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.25rem;
+    --sp-6: 1.5rem;
+    --sp-8: 2rem;
+    --sp-10: 2.5rem;
+    --sp-12: 3rem;
+    --sp-16: 4rem;
+    --sp-20: 5rem;
+    --sp-24: 6rem;
+    --sp-32: 8rem;
+
+    /* Radii */
+    --r-xs: 8px;
+    --r-sm: 12px;
+    --r-md: 18px;
+    --r-lg: 26px;
+    --r-xl: 34px;
+    --r-2xl: 44px;
+    --r-pill: 999px;
+
+    /* Blur */
+    --blur-xs: 6px;
+    --blur-sm: 12px;
+    --blur-md: 20px;
+    --blur-lg: 30px;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 160ms;
+    --dur-base: 320ms;
+    --dur-slow: 620ms;
+
+    /* Layout */
+    --container: 1240px;
+    --container-narrow: 880px;
+    --gutter: clamp(1rem, 4vw, 2.75rem);
+    --header-h: 76px;
+
+    /* Layers */
+    --z-bg: -1;
+    --z-content: 1;
+    --z-header: 100;
+    --z-menu: 200;
+    --z-toast: 300;
+    --z-preloader: 400;
+}

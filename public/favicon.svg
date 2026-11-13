@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MediCare Hospital">
+  <defs>
+    <linearGradient id="mc-g" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9AF5D5"/>
+      <stop offset="0.45" stop-color="#00C896"/>
+      <stop offset="1" stop-color="#087F5B"/>
+    </linearGradient>
+    <radialGradient id="mc-glow" cx="32" cy="26" r="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00C896" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#00C896" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#061918"/>
+  <rect width="64" height="64" rx="16" fill="url(#mc-glow)"/>
+  <path d="M26.5 12h11v14.5H52v11H37.5V52h-11V37.5H12v-11h14.5z" fill="url(#mc-g)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+  <path d="M29 15h3v14.5H18v3h14V47h3V32.5h14v-3H35V15z" fill="#F4FFFB" opacity="0.14"/>
+</svg>

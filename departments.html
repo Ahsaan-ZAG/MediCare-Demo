@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Departments — MediCare Hospital Demo</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+</head>
+
+<body data-page="departments">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="bg-orbs" aria-hidden="true"></div>
+    <div id="site-preloader"></div>
+    <div id="demo-banner"></div>
+    <header id="site-header" class="site-header"></header>
+    <main id="main">
+        <div id="page-hero"></div>
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div id="directory-controls" class="mb-8"></div>
+                <div class="grid grid--depts" id="directory-grid" aria-live="polite"></div>
+                <div id="directory-empty" class="empty-state" hidden>
+                    <p>No departments found matching your search.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="site-footer"></div>
+    <div id="site-utilities"></div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

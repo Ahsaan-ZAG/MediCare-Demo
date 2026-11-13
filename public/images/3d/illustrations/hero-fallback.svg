@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" role="img"
+     aria-labelledby="fbTitle fbDesc">
+  <title id="fbTitle">MediCare Hospital helix emblem</title>
+  <desc id="fbDesc">A stylised glowing emerald medical cross inside a glass sphere with a DNA helix, used when WebGL is unavailable.</desc>
+
+  <defs>
+    <radialGradient id="sphere" cx="34%" cy="26%" r="78%">
+      <stop offset="0%" stop-color="#9AF5D5" stop-opacity="0.30"/>
+      <stop offset="46%" stop-color="#00C896" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#061918" stop-opacity="0.05"/>
+    </radialGradient>
+
+    <linearGradient id="crossGrad" x1="180" y1="150" x2="400" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9AF5D5"/>
+      <stop offset="0.45" stop-color="#00C896"/>
+      <stop offset="1" stop-color="#087F5B"/>
+    </linearGradient>
+
+    <linearGradient id="helixA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9AF5D5" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#00C896" stop-opacity="0.25"/>
+    </linearGradient>
+
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00C896" stop-opacity="0.45"/>
+      <stop offset="70%" stop-color="#00C896" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#00C896" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soften" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- ambient halo -->
+  <circle cx="280" cy="272" r="250" fill="url(#halo)"/>
+
+  <!-- glass sphere -->
+  <circle cx="280" cy="272" r="196" fill="url(#sphere)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+  <ellipse cx="222" cy="176" rx="86" ry="52" fill="#FFFFFF" opacity="0.07" transform="rotate(-28 222 176)"/>
+
+  <!-- DNA helix strands -->
+  <g stroke="url(#helixA)" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85">
+    <path d="M196 128c62 34 62 90 0 124s-62 90 0 124 62 90 0 124"/>
+    <path d="M364 128c-62 34-62 90 0 124s62 90 0 124-62 90 0 124"/>
+  </g>
+  <g stroke="#9AF5D5" stroke-width="4" stroke-linecap="round" opacity="0.35">
+    <path d="M210 156h140M188 204h184M188 252h184M210 300h140M188 348h184M210 396h140"/>
+  </g>
+
+  <!-- medical cross -->
+  <g filter="url(#soften)" opacity="0.55">
+    <path d="M248 176h64v72h72v64h-72v72h-64v-72h-72v-64h72z" fill="#00C896"/>
+  </g>
+  <path d="M248 176h64v72h72v64h-72v72h-64v-72h-72v-64h72z"
+        fill="url(#crossGrad)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" rx="6"/>
+
+  <!-- specular highlight on the cross -->
+  <path d="M254 184h24v72h-24z" fill="#F4FFFB" opacity="0.16"/>
+
+  <!-- rim light -->
+  <path d="M280 76a196 196 0 0 1 176 110" stroke="#9AF5D5" stroke-width="2.5"
+        fill="none" opacity="0.5" stroke-linecap="round"/>
+</svg>

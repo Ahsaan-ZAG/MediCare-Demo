@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>MediCare Hospital — Your Health, Our Priority | Fictional 3D Healthcare Demo</title>
+    <meta name="description"
+        content="MediCare Hospital is a fictional multi-specialty healthcare website concept — a premium 3D glassmorphism front-end demonstration." />
+    <meta name="theme-color" content="#061918" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="./index.html" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+</head>
+
+<body data-page="home">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="bg-orbs" aria-hidden="true"></div>
+    <div id="site-preloader"></div>
+    <div id="demo-banner"></div>
+    <header id="site-header" class="site-header"></header>
+
+    <main id="main">
+        <!-- HERO -->
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="container hero__grid">
+                <div class="hero__content">
+                    <span class="hero__badge glass-soft">
+                        <span class="hero__badge-dot" aria-hidden="true"></span>
+                        Fictional Demo · Multi-Specialty Concept
+                    </span>
+                    <h1 class="hero__title" id="hero-title">
+                        Healthcare,
+                        <span class="accent">reimagined in three dimensions.</span>
+                    </h1>
+                    <p class="hero__lede">
+                        A premium, interactive concept for a modern multi-specialty hospital —
+                        built with real 3D, deep glassmorphism and cinematic motion.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="appointment.html">
+                            Book a Demo Visit
+                            <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                        <a class="btn btn--glass" href="departments.html">Explore Departments</a>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="stage glass-strong">
+                        <canvas id="hero-canvas" class="stage__canvas"
+                            aria-label="Interactive 3D medical helix illustration" role="img"></canvas>
+                        <img id="hero-fallback" class="stage__fallback"
+                            src="./images/3d/illustrations/hero-fallback.svg" alt="Medical helix" width="560"
+                            height="560" hidden />
+                        <span class="stage__corner stage__corner--tl" aria-hidden="true"></span>
+                        <span class="stage__corner stage__corner--tr" aria-hidden="true"></span>
+                        <span class="stage__corner stage__corner--bl" aria-hidden="true"></span>
+                        <span class="stage__corner stage__corner--br" aria-hidden="true"></span>
+                        <div class="stage-card glass stage-card--a">
+                            <span class="stage-card__pulse" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M1 8h3l2-4 3 8 2-4h4" stroke="currentColor" stroke-width="1.5" />
+                                </svg></span>
+                            <span><strong>Live Vitals Demo</strong>Illustrative readout only</span>
+                        </div>
+                        <div class="stage-card glass stage-card--b">
+                            <span class="stage-card__pulse" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" />
+                                </svg></span>
+                            <span><strong>12 Departments</strong>Fictional directory</span>
+                        </div>
+                        <span class="stage-status">Live 3D · move your pointer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats" aria-labelledby="stats-title">
+            <div class="container">
+                <h2 class="sr-only" id="stats-title">Illustrative demonstration statistics</h2>
+                <div class="stats__panel glass" id="stats-panel"></div>
+            </div>
+        </section>
+
+        <!-- DEPARTMENTS -->
+        <section class="section" aria-labelledby="depts-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Departments</span>
+                    <h2 class="section-head__title" id="depts-title">Twelve specialties, one coherent concept.</h2>
+                    <p class="section-head__lede">Each department is a fictional demonstration entry, illustrated with a
+                        procedurally drawn organ or equipment glyph.</p>
+                </div>
+                <div class="grid grid--depts" id="grid-departments" aria-live="polite"></div>
+                <div style="margin-top: var(--sp-8); display: flex; justify-content: center;">
+                    <a class="btn btn--glass" href="departments.html">Explore all departments</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCTORS -->
+        <section class="section" aria-labelledby="doctors-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Featured team</span>
+                    <h2 class="section-head__title" id="doctors-title">A sample roster, clearly labelled as demo.</h2>
+                    <p class="section-head__lede">Every doctor on this page is fictional. The layout demonstrates how a
+                        real practice might present its specialists.</p>
+                </div>
+                <div class="grid grid--doctors" id="grid-doctors" aria-live="polite"></div>
+                <div style="margin-top: var(--sp-8); display: flex; justify-content: center;">
+                    <a class="btn btn--glass" href="doctors.html">Browse all doctors</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Services</span>
+                    <h2 class="section-head__title" id="services-title">Support services that hold a hospital together.
+                    </h2>
+                </div>
+                <div class="grid grid--services" id="grid-services" aria-live="polite"></div>
+                <div style="margin-top: var(--sp-8); display: flex; justify-content: center;">
+                    <a class="btn btn--glass" href="services.html">All medical services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" aria-labelledby="about-title">
+            <div class="container about-grid">
+                <div class="about-visual" data-reveal>
+                    <div class="about-visual__panel glass-panel">
+                        <svg viewBox="0 0 64 64" width="120" height="120" aria-hidden="true">
+                            <path d="M32 8L56 20V44L32 56L8 44V20L32 8Z" fill="none" stroke="var(--c-emerald-500)"
+                                stroke-width="1.5" stroke-dasharray="2 4" />
+                            <circle cx="32" cy="32" r="10" fill="var(--c-emerald-500)" opacity="0.2" />
+                            <circle cx="32" cy="32" r="4" fill="var(--c-mint-300)" />
+                        </svg>
+                        <span class="about-visual__badge glass">Fictional Concept</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="eyebrow" data-reveal>About MediCare</span>
+                    <h2 class="section-head__title" id="about-title" data-reveal>A demonstration of clarity, calm and
+                        modern care.</h2>
+                    <p class="section-head__lede" data-reveal>This project explores how a multi-specialty hospital could
+                        present itself online. Every element is built to feel premium, accessible, and honest about its
+                        status as a fictional concept.</p>
+                    <div data-reveal><a class="btn btn--primary" href="about.html" style="margin-top: var(--sp-4);">Read
+                            our story</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FACILITIES -->
+        <section class="section" aria-labelledby="facilities-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Facilities</span>
+                    <h2 class="section-head__title" id="facilities-title">The spaces that hold a hospital together.</h2>
+                </div>
+                <div class="grid grid--facilities" id="grid-facilities"></div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US -->
+        <section class="section" aria-labelledby="why-title">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <span class="eyebrow">Why choose us</span>
+                    <h2 class="section-head__title" id="why-title">Purposefully different.</h2>
+                </div>
+                <div class="feature-grid" data-reveal>
+                    <div class="feature-box glass"><span class="feature-box__num">01</span>
+                        <h3 class="feature-box__title">Honesty by default</h3>
+                        <p class="feature-box__text">Fictional content is clearly labelled. We do not pretend to be a
+                            real hospital.</p>
+                    </div>
+                    <div class="feature-box glass"><span class="feature-box__num">02</span>
+                        <h3 class="feature-box__title">Accessible interactions</h3>
+                        <p class="feature-box__text">Keyboard navigation, visible focus states, and reduced-motion
+                            support built-in.</p>
+                    </div>
+                    <div class="feature-box glass"><span class="feature-box__num">03</span>
+                        <h3 class="feature-box__title">Real 3D, optimized</h3>
+                        <p class="feature-box__text">The hero uses live WebGL 2, but intelligently pauses off-screen and
+                            falls back gracefully.</p>
+                    </div>
+                    <div class="feature-box glass"><span class="feature-box__num">04</span>
+                        <h3 class="feature-box__title">No dead ends</h3>
+                        <p class="feature-box__text">Every link resolves, every form validates, every slider works. A
+                            complete front-end.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPOINTMENT CTA -->
+        <section class="section" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-banner glass-strong" data-reveal>
+                    <div class="cta-banner__bg" aria-hidden="true"></div>
+                    <div class="cta-banner__content">
+                        <h2 class="cta-banner__title" id="cta-title">Ready to explore the demo experience?</h2>
+                        <p class="cta-banner__lede">Try the interactive appointment form. It validates inputs and shows
+                            a success state — without transmitting any data.</p>
+                        <a class="btn btn--primary" href="appointment.html">Open Demo Form</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="section" aria-labelledby="testimonials-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Testimonials</span>
+                    <h2 class="section-head__title" id="testimonials-title">Sample feedback.</h2>
+                </div>
+                <div class="swiper" id="testimonial-slider" data-reveal></div>
+            </div>
+        </section>
+
+        <!-- ARTICLES -->
+        <section class="section" aria-labelledby="articles-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow">Health Awareness</span>
+                    <h2 class="section-head__title" id="articles-title">Educational articles.</h2>
+                </div>
+                <div class="grid grid--articles" id="grid-articles"></div>
+                <div style="margin-top: var(--sp-8); display: flex; justify-content: center;">
+                    <a class="btn btn--glass" href="blog.html">Read all articles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ PREVIEW -->
+        <section class="section" aria-labelledby="faq-title">
+            <div class="container container--narrow">
+                <div class="section-head section-head--center" data-reveal>
+                    <span class="eyebrow">FAQ</span>
+                    <h2 class="section-head__title" id="faq-title">Common questions.</h2>
+                </div>
+                <div class="accordion" id="faq-accordion" data-reveal></div>
+                <div style="margin-top: var(--sp-6); text-align: center;">
+                    <a class="btn btn--ghost" href="faq.html">View all 20 FAQs</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <div id="site-utilities"></div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

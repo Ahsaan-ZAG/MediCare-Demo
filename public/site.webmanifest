@@ -1,0 +1,12 @@
+{
+  "name": "MediCare Hospital — Demo",
+  "short_name": "MediCare",
+  "description": "Premium 3D glassmorphism healthcare website concept. Fictional demonstration project.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#061918",
+  "theme_color": "#061918",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

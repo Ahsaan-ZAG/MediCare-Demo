@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Fictional demonstration website. Not a real healthcare provider.
