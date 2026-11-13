@@ -15,4 +15,4 @@ glassmorphism, and cinematic GSAP motion.
 ## Install
 
 ```bash
-npm install
+npm install"# MediCare-Demo" 
