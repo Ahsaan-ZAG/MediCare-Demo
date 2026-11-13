@@ -3,8 +3,8 @@ import { site } from '../config/site.config.js';
 import { qs, qsa, on, escapeHtml } from '../utils/dom.js';
 
 const currentPage = () => {
-  const file = window.location.pathname.split('/').pop() || 'index.html';
-  return file === '' ? 'index.html' : file;
+    const file = window.location.pathname.split('/').pop() || 'index.html';
+    return file === '' ? 'index.html' : file;
 };
 
 const chevron = `
@@ -13,20 +13,20 @@ const chevron = `
   </svg>`;
 
 function buildDesktopItem(item) {
-  const isActive = currentPage() === item.href;
+    const isActive = currentPage() === item.href;
 
-  if (!item.children) {
-    return `
+    if (!item.children) {
+        return `
       <li class="nav-item">
         <a class="nav-link" href="${item.href}"${isActive ? ' aria-current="page"' : ''}>${escapeHtml(item.label)}</a>
       </li>`;
-  }
+    }
 
-  const children = item.children
-    .map((child) => `<a href="${child.href}">${escapeHtml(child.label)}</a>`)
-    .join('');
+    const children = item.children
+        .map((child) => `<a href="${child.href}">${escapeHtml(child.label)}</a>`)
+        .join('');
 
-  return `
+    return `
     <li class="nav-item" data-dropdown>
       <a class="nav-link" href="${item.href}"${isActive ? ' aria-current="page"' : ''}
          aria-haspopup="true" aria-expanded="false">
@@ -39,9 +39,9 @@ function buildDesktopItem(item) {
 }
 
 export function renderNavbar(mount) {
-  if (!mount) return;
+    if (!mount) return;
 
-  mount.innerHTML = `
+    mount.innerHTML = `
     <div class="container">
       <nav class="navbar" aria-label="Primary">
         <a class="brand" href="index.html" aria-label="${site.name} — home">
@@ -74,88 +74,103 @@ export function renderNavbar(mount) {
       </nav>
     </div>
 
+    <!-- Mobile Menu Drawer -->
     <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
       ${primaryNav
-        .map((item) => `<a href="${item.href}">${escapeHtml(item.label)}${chevron}</a>`)
-        .join('')}
+            .map((item) => `<a href="${item.href}">${escapeHtml(item.label)} ${chevron}</a>`)
+            .join('')}
       <a class="btn btn--primary" href="appointment.html">Book a Demo Visit</a>
     </div>
   `;
 }
 
 export function initNavbar(mount) {
-  if (!mount) return;
+    if (!mount) return;
 
-  const header = mount.closest('.site-header') || mount;
-  const toggle = qs('.nav-toggle', mount);
-  const mobileNav = qs('#mobile-nav', mount);
+    const header = mount.closest('.site-header') || mount;
+    const toggle = qs('.nav-toggle', mount);
+    const mobileNav = qs('#mobile-nav', mount);
 
-  /* ---- scroll state ---- */
-  let ticking = false;
-  const applyScrollState = () => {
-    const scrolled = window.scrollY > 18;
-    header.classList.toggle('is-scrolled', scrolled);
-    ticking = false;
-  };
-  on(window, 'scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(applyScrollState);
-  }, { passive: true });
-  applyScrollState();
+    /* ---- Scroll State ---- */
+    let ticking = false;
+    const applyScrollState = () => {
+        const scrolled = window.scrollY > 18;
+        header.classList.toggle('is-scrolled', scrolled);
+        ticking = false;
+    };
+    on(window, 'scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(applyScrollState);
+    }, { passive: true });
+    applyScrollState();
 
-  /* ---- mobile drawer ---- */
-  const setDrawer = (open) => {
-    mobileNav.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    mobileNav.setAttribute('aria-hidden', String(!open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  };
+    /* ---- Mobile Drawer Logic ---- */
+    const setDrawer = (open) => {
+        mobileNav.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        mobileNav.setAttribute('aria-hidden', String(!open));
 
-  on(toggle, 'click', () => setDrawer(!mobileNav.classList.contains('is-open')));
-  on(mobileNav, 'click', (event) => {
-    if (event.target.closest('a')) setDrawer(false);
-  });
-  on(document, 'keydown', (event) => {
-    if (event.key === 'Escape' && mobileNav.classList.contains('is-open')) {
-      setDrawer(false);
-      toggle.focus();
-    }
-  });
-  on(window, 'resize', () => {
-    if (window.innerWidth > 900 && mobileNav.classList.contains('is-open')) setDrawer(false);
-  });
+        // Lock body scroll when menu is open
+        if (open) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    };
 
-  /* ---- desktop dropdown keyboard support ---- */
-  qsa('[data-dropdown]', mount).forEach((item) => {
-    const trigger = qs('.nav-link', item);
-    if (!trigger) return;
+    on(toggle, 'click', () => setDrawer(!mobileNav.classList.contains('is-open')));
 
-    on(trigger, 'keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
-        if (window.innerWidth <= 900) return;
-        event.preventDefault();
-        item.classList.add('is-open');
-        trigger.setAttribute('aria-expanded', 'true');
-        const firstLink = qs('.nav-dropdown a', item);
-        firstLink?.focus();
-      }
+    // Close menu when clicking a link
+    on(mobileNav, 'click', (event) => {
+        if (event.target.closest('a')) setDrawer(false);
     });
 
-    on(item, 'keydown', (event) => {
-      if (event.key === 'Escape') {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-        trigger.focus();
-      }
+    // Close menu on Escape key
+    on(document, 'keydown', (event) => {
+        if (event.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+            setDrawer(false);
+            toggle.focus();
+        }
     });
 
-    on(item, 'focusout', (event) => {
-      if (!item.contains(event.relatedTarget)) {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
+    // Reset menu if screen is resized to desktop
+    on(window, 'resize', () => {
+        if (window.innerWidth > 900 && mobileNav.classList.contains('is-open')) {
+            setDrawer(false);
+        }
     });
-  });
+
+    /* ---- Desktop Dropdown Keyboard Support ---- */
+    qsa('[data-dropdown]', mount).forEach((item) => {
+        const trigger = qs('.nav-link', item);
+        if (!trigger) return;
+
+        on(trigger, 'keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+                if (window.innerWidth <= 900) return;
+                event.preventDefault();
+                item.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+                const firstLink = qs('.nav-dropdown a', item);
+                firstLink?.focus();
+            }
+        });
+
+        on(item, 'keydown', (event) => {
+            if (event.key === 'Escape') {
+                item.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+                trigger.focus();
+            }
+        });
+
+        on(item, 'focusout', (event) => {
+            if (!item.contains(event.relatedTarget)) {
+                item.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
 }

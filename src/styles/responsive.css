@@ -1,23 +1,46 @@
 /* ==========================================================================
-   Responsive overrides — mobile-first rules live in the component files
+   MediCare Hospital — Complete Responsive System
    ========================================================================== */
 
-@media (max-width: 1080px) {
+/* Prevent horizontal scroll on mobile (very common with 3D/Absolute elements) */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* ==========================================================================
+   LARGE SCREENS (1200px+)
+   ========================================================================== */
+@media (min-width: 1200px) {
+    .container {
+        padding-inline: 2rem;
+    }
+}
+
+/* ==========================================================================
+   TABLETS & SMALL LAPTOPS (Max 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+    /* Hero Section */
     .hero__grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
     }
 
     .hero__content {
         justify-items: center;
-        text-align: center;
     }
 
     .hero__title {
-        max-width: 20ch;
+        max-width: 100%;
+        font-size: var(--fs-4xl);
     }
 
     .hero__lede {
-        max-width: 56ch;
+        margin-inline: auto;
     }
 
     .hero__actions {
@@ -30,50 +53,120 @@
 
     .hero__visual {
         order: -1;
+        /* 3D visual upar aayega mobile/tablet par */
     }
 
-    .stage {
-        max-width: 460px;
+    /* Grids */
+    .grid--depts,
+    .grid--services,
+    .grid--facilities,
+    .grid--articles {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .stage-card--a {
-        right: 0;
+    .grid--doctors {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .stage-card--b {
-        left: 0;
-    }
-
+    /* Footer */
     .footer__grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* ==========================================================================
+   MOBILE DEVICES (Max 900px) - NAVBAR OVERHAUL
+   ========================================================================== */
 @media (max-width: 900px) {
-    .nav-list {
-        display: none;
+    :root {
+        --header-h: 70px;
     }
 
+    /* --- Navbar --- */
+    .site-header.is-scrolled .navbar {
+        margin-inline: 0;
+        padding-inline: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
+    /* Hide desktop menu, show hamburger */
+    .nav-list,
     .nav-actions .btn--primary {
         display: none;
     }
 
     .nav-toggle {
         display: grid;
+        /* Hamburger button */
     }
 
-    .site-header.is-scrolled .navbar {
-        margin-inline: 0;
-        padding-inline: 0;
-        border: 0;
-        background: transparent;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+    /* Mobile Drawer - Full Screen Glass */
+    .mobile-nav {
+        position: fixed;
+        inset: 0;
+        padding-top: calc(var(--header-h) + 2rem);
+        background: rgba(6, 25, 24, 0.95);
+        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: blur(24px);
+        z-index: calc(var(--z-header) - 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        overflow-y: auto;
     }
 
+    .mobile-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mobile-nav a {
+        width: 100%;
+        max-width: 400px;
+        padding: 1.25rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-family: var(--font-display);
+        font-size: var(--fs-xl);
+        color: var(--c-text);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav .btn {
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* --- Hero Stage --- */
+    .stage {
+        max-width: 400px;
+        margin-inline: auto;
+    }
+
+    .stage-card--a {
+        top: 5%;
+        right: -5%;
+    }
+
+    .stage-card--b {
+        bottom: 5%;
+        left: -5%;
+    }
+
+    /* --- Stats Panel --- */
     .stats__panel {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--sp-3);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .stat+.stat {
@@ -84,90 +177,116 @@
         box-shadow: inset 1px 0 0 var(--glass-border-soft);
     }
 
-    .stat:nth-child(n + 3) {
-        border-top: 1px solid var(--glass-border-soft);
-        padding-top: var(--sp-4);
+    /* --- Sections & About --- */
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-content {
+        justify-items: center;
+    }
+
+    .about-visual {
+        aspect-ratio: 16/9;
+        max-height: 300px;
+    }
+
+    /* --- Forms --- */
+    .form-grid,
+    .contact-grid,
+    .profile-layout,
+    .about-mv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Page Hero --- */
+    .page-hero__title {
+        font-size: var(--fs-3xl);
+    }
+
+    /* --- Article / Blog --- */
+    .article-content {
+        padding: 1.5rem;
     }
 }
 
-@media (max-width: 620px) {
-    :root {
-        --header-h: 66px;
+/* ==========================================================================
+   SMALL MOBILE DEVICES (Max 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+
+    /* Typography adjustments */
+    h1 {
+        font-size: var(--fs-3xl);
     }
 
-    .demo-banner {
-        font-size: 0.62rem;
+    h2 {
+        font-size: var(--fs-2xl);
     }
 
-    .hero {
-        padding-top: var(--sp-8);
+    h3 {
+        font-size: var(--fs-xl);
     }
 
-    .hero__badge {
-        font-size: 0.6rem;
+    /* Grids - Stack everything in 1 column */
+    .grid--depts,
+    .grid--doctors,
+    .grid--services,
+    .grid--facilities,
+    .grid--articles,
+    .grid--gallery {
+        grid-template-columns: 1fr;
     }
 
-    .hero__actions {
-        width: 100%;
-    }
-
-    .hero__actions .btn {
-        flex: 1 1 auto;
-    }
-
-    .stage {
-        max-width: 360px;
+    /* Hero Tweaks */
+    .hero__title {
+        font-size: var(--fs-3xl);
     }
 
     .stage-card {
-        padding: 0.55rem 0.8rem;
-    }
-
-    .stage-card--a {
-        top: 4%;
-        right: 2%;
-    }
-
-    .stage-card--b {
-        bottom: 6%;
-        left: 2%;
-    }
-
-    .stage-status {
         display: none;
+        /* Floating cards hide on small screens to prevent overlap */
     }
 
-    .footer__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer__bottom {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 420px) {
+    /* Stats - Stack in 1 column */
     .stats__panel {
         grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .stat+.stat {
         box-shadow: none;
         border-top: 1px solid var(--glass-border-soft);
-        padding-top: var(--sp-4);
+        padding-top: 1rem;
     }
-}
 
-@media (max-width: 620px) {
+    .stat:nth-child(even) {
+        box-shadow: none;
+    }
 
-    .grid--depts,
-    .grid--doctors,
-    .grid--services {
+    /* Footer */
+    .footer__grid {
         grid-template-columns: 1fr;
+        text-align: center;
     }
 
-    .card {
-        padding: var(--sp-4);
+    .footer__col h2 {
+        margin-top: 1rem;
+    }
+
+    /* Buttons */
+    .hero__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero__actions .btn {
+        width: 100%;
+    }
+
+    /* Form Fields (Bigger touch targets) */
+    .form-input {
+        padding: 1rem;
     }
 }

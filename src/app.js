@@ -26,6 +26,16 @@ const pageModules = {
   'not-found': () => import('./pages/not-found.js')
 };
 
+import { renderDemoBanner } from './components/demo-banner.js';
+import { renderNavbar, initNavbar } from './components/navbar.js';
+import { renderFooter } from './components/footer.js';
+import { renderPreloader, initPreloader } from './components/preloader.js';
+import { renderBackToTop, initBackToTop } from './components/back-to-top.js';
+import { initPwaPrompt } from './components/pwa-prompt.js'; // <--- Naya Import
+import { qs } from './utils/dom.js';
+
+// ... pageModules same rahenge ...
+
 function mountSharedChrome() {
   const bannerMount = qs('#demo-banner');
   const headerMount = qs('#site-header');
@@ -35,17 +45,17 @@ function mountSharedChrome() {
 
   renderPreloader(preloaderMount);
   renderDemoBanner(bannerMount);
-
   renderNavbar(headerMount);
   initNavbar(headerMount);
-
   renderFooter(footerMount);
-
   renderBackToTop(utilityMount);
   initBackToTop(utilityMount);
-
   initPreloader();
+  
+  // Yahan PWA Prompt initialize karein
+  initPwaPrompt(); 
 }
+// ... baqi code same rahega ...
 
 function markActiveNav() {
   const file = window.location.pathname.split('/').pop() || 'index.html';
